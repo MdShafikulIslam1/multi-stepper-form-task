@@ -1,35 +1,69 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import "./App.css";
+import FormItem from "./components/formItem/FormItem";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const formLength = [1, 2, 3];
+  const [formNo, setFormNo] = useState(formLength[0]);
 
+  const handleNextClick = () => {
+    setFormNo((formNo) => formNo + 1);
+  };
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="w-screen h-screen bg-slate-300 flex justify-center items-center">
+      <div className="card w-1/2 rounded-md shadow-md bg-white p-5">
+        {/* show indicator  */}
+        <div className="flex justify-center items-center">
+          {formLength.map((v, i) => (
+            <>
+              <div
+                className={`w-[35px] my-3 text-white rounded-full ${
+                  formNo - 1 === i ||
+                  formNo - 1 === i + 1 ||
+                  formNo === formLength.length
+                    ? "bg-blue-500"
+                    : "bg-slate-400"
+                } h-[35px] flex justify-center items-center`}
+              >
+                {v}
+              </div>
+              {i !== formLength.length - 1 && (
+                <div
+                  className={`w-[85px] h-[2px] ${
+                    formNo === i + 2 || formNo === formLength.length
+                      ? "bg-blue-500"
+                      : "bg-slate-400"
+                  }`}
+                ></div>
+              )}
+            </>
+          ))}
+        </div>
+
+        {/* show form component dynamically */}
+        <div className="mt-6">
+          {formNo === 1 && (
+            <div>
+              <FormItem
+                title="Which describes you best?"
+                description="this will help us personalize your experience"
+              />
+              <div
+                onClick={handleNextClick}
+                className="mt-4 flex justify-center items-center"
+              >
+                <button
+                  className={`px-8 py-2 text-lg rounded-md text-white bg-black`}
+                >
+                  Continue
+                </button>
+              </div>
+            </div>
+          )}
+        </div>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </div>
+  );
 }
 
-export default App
+export default App;
