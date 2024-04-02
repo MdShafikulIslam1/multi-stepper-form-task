@@ -2,8 +2,12 @@
 import { useState } from "react";
 import "./App.css";
 import FormItem from "./components/formItem/FormItem";
-import ThirdFormItem from "./components/formItem/thirdFormItem/ThirdFormItem";
-import { bestOptions, interestedOptions } from "./constant";
+import ImageTextPairing from "./components/formItem/ImageTextPairing/ImageTextPairing";
+import {
+  bestOptions,
+  interestedOptions,
+  mathematicianOptions,
+} from "./constant";
 
 interface IStateValue {
   describe: string;
@@ -11,7 +15,7 @@ interface IStateValue {
 }
 
 function App() {
-  const formLength = [1, 2, 3];
+  const formLength = [1, 2, 3, 4, 5];
   const [formNo, setFormNo] = useState(formLength[0]);
   const [stateValue, setStateValue] = useState<IStateValue>({
     describe: "",
@@ -51,6 +55,8 @@ function App() {
                 className={`w-[35px] my-3 text-white rounded-full ${
                   formNo - 1 === i ||
                   formNo - 1 === i + 1 ||
+                  formNo - 1 === i + 2 ||
+                  formNo - 1 === i + 3 ||
                   formNo === formLength.length
                     ? "bg-blue-500"
                     : "bg-slate-400"
@@ -61,7 +67,10 @@ function App() {
               {i !== formLength.length - 1 && (
                 <div
                   className={`w-[85px] h-[2px] ${
-                    formNo === i + 2 || formNo === formLength.length
+                    formNo === i + 2 ||
+                    formNo === i + 3 ||
+                    formNo === i + 4 ||
+                    formNo === formLength.length
                       ? "bg-blue-500"
                       : "bg-slate-400"
                   }`}
@@ -123,9 +132,13 @@ function App() {
                 </button>
               </div>
             </div>
-          ) : (
+          ) : formNo === 3 ? (
             <div>
-              <ThirdFormItem />
+              <ImageTextPairing
+                image="https://w7.pngwing.com/pngs/156/1012/png-transparent-measuring-scales-scales-miscellaneous-angle-triangle.png"
+                title="You are in the right place"
+                description=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis ducimus vitae eveniet ab maiores molestiae animi voluptas quidem, illo quisquam?"
+              />
               <div className="mt-4 flex gap-5 justify-center items-center">
                 <button
                   onClick={handlePrevClick}
@@ -140,6 +153,59 @@ function App() {
                   }`}
                 >
                   Continue
+                </button>
+              </div>
+            </div>
+          ) : formNo === 4 ? (
+            // mathematically options
+            <div>
+              <FormItem
+                title="What is your math comfort level ?"
+                description="choose the highest level you confident in"
+                data={mathematicianOptions}
+                setSelectedItem={setSelectedItem}
+                selectedItem={selectedItem}
+                handleItemClick={handleItemClick}
+              />
+              <div className="mt-4 flex gap-5 justify-center items-center">
+                <button
+                  onClick={handlePrevClick}
+                  className="px-3 py-2 text-lg rounded-md text-white bg-blue-500"
+                >
+                  Previous
+                </button>
+                <button
+                  onClick={handleNextClick}
+                  className={`px-8 py-2 text-lg rounded-md text-white ${
+                    selectedItem !== null ? "bg-black" : "bg-slate-400"
+                  }`}
+                >
+                  Submit
+                </button>
+              </div>
+            </div>
+          ) : (
+            // last - excited form submission card
+            <div>
+              <ImageTextPairing
+                title="you are on your way !"
+                image="https://img.freepik.com/free-vector/happy-boy-with-backpack-jumping_1308-88237.jpg"
+                description=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis ducimus vitae eveniet ab maiores molestiae animi voluptas quidem, illo quisquam?"
+              />
+              <div className="mt-4 flex gap-5 justify-center items-center">
+                <button
+                  onClick={handlePrevClick}
+                  className="px-3 py-2 text-lg rounded-md text-white bg-blue-500"
+                >
+                  Previous
+                </button>
+                <button
+                  onClick={handleNextClick}
+                  className={`px-8 py-2 text-lg rounded-md text-white ${
+                    selectedItem !== null ? "bg-black" : "bg-slate-400"
+                  }`}
+                >
+                  Submit
                 </button>
               </div>
             </div>

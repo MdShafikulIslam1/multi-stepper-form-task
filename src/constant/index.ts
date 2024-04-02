@@ -63,3 +63,26 @@ export const interestedOptions = [
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8Avb6JmJX98q-wxfEMBJF9WORX0kLwkVw6ASL6ticEg&s",
   },
 ];
+
+export const mathematicianOptions = [
+  {
+    title: "Arithmetic - Introductory",
+    image:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8Avb6JmJX98q-wxfEMBJF9WORX0kLwkVw6ASL6ticEg&s",
+  },
+  {
+    title: "Basic Algebra - Foundational",
+    image:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8Avb6JmJX98q-wxfEMBJF9WORX0kLwkVw6ASL6ticEg&s",
+  },
+  {
+    title: "Intermediate Algebra - Intermediate",
+    image:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8Avb6JmJX98q-wxfEMBJF9WORX0kLwkVw6ASL6ticEg&s",
+  },
+  {
+    title: "Calculus - Advanced",
+    image:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8Avb6JmJX98q-wxfEMBJF9WORX0kLwkVw6ASL6ticEg&s",
+  },
+];
