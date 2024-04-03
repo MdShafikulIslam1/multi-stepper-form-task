@@ -11,13 +11,13 @@ const ImageTextPairing = ({
   description,
 }: IImageTextPairingProps) => {
   return (
-    <div className="flex gap-10 items-center justify-center">
-      <div>
-        <img src={image} alt="" />
+    <div className="flex items-center justify-center gap-10">
+      <div className="w-64 h-64">
+        <img src={image} alt="" className="w-full h-full object-contain" />
       </div>
-      <div>
-        <h1>{title}</h1>
-        <p>{description}</p>
+      <div className="text-start">
+        <h1 className="text-xl md:text-2xl mb-4 font-semibold">{title}</h1>
+        <p className="text-slate-600">{description}</p>
       </div>
     </div>
   );
